@@ -32,6 +32,13 @@ function App() {
         }
     }
 
+    const handleDelete = async(categoryId) => {
+        const response = await fetch(`${API_ENDPOINT}/${categoryId}`,{
+            method: "DELETE"
+        })
+        if (response.ok) {fetchCategories()}
+    }
+
     return(
         <div>
             <h1>Categories CRUD</h1>
@@ -43,7 +50,9 @@ function App() {
             <button onClick = {handleCreate}>Create a new category</button>
             <ul>
                 {categories.map(category => (
-                    <li>{category.name}</li>
+                    <li>{category.name}
+                    <button onClick = {() => handleDelete(category.id)}>Delete</button>
+                    </li>
                 ))}
             </ul>
         </div>
