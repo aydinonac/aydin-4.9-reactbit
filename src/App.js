@@ -39,6 +39,20 @@ function App() {
         if (response.ok) {fetchCategories()}
     }
 
+    const handleUpdate = async() => {
+        if (!selectedCategory) return;
+        const response = await fetch(`${API_ENDPOINT}/${selectedCategory.id}`, {
+            method: "PUT",
+            headers: {'Content-Type': "application/json"},
+            body: JSON.stringify({name})
+        })
+    if (response.ok) {
+        fetchCategories()
+        setName("")
+        setSelectedCategory(null)
+        }
+    }
+
     return(
         <div>
             <h1>Categories CRUD</h1>
@@ -47,11 +61,17 @@ function App() {
                 onChange = {(e) => setName(e.target.value)}
                 placeholder = "CategoryName"
             />
-            <button onClick = {handleCreate}>Create a new category</button>
+
+            {selectedCategory? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
+            
             <ul>
                 {categories.map(category => (
                     <li>{category.name}
                     <button onClick = {() => handleDelete(category.id)}>Delete</button>
+                    <button onClick = {() => {
+                        setName(category.name)
+                        setSelectedCategory(category)
+                    } }>Select</button>
                     </li>
                 ))}
             </ul>
