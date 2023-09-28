@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import Items from './Items'
 
 const API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/categories"
 
 
 function App() {
     const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [editCategory, setEditCategory] = useState(null)
     const [name, setName] = useState('')
+    const [selectCategory, setSelectCategory] = useState(null)
 
     //hydrate = brings in data, makes available to be rendered in browser (like displaying in console)//
     useEffect(() => {
@@ -28,9 +30,11 @@ function App() {
         if (response.ok) {
             fetchCategories()
             setName("")
-            setSelectedCategory(null)
+            setEditCategory(null)
         }
     }
+// To be done...go to Items component with parameter of category.id
+    // const handleSelect = async(category.id) => {}
 
     const handleDelete = async(categoryId) => {
         const response = await fetch(`${API_ENDPOINT}/${categoryId}`,{
@@ -40,8 +44,8 @@ function App() {
     }
 
     const handleUpdate = async() => {
-        if (!selectedCategory) return;
-        const response = await fetch(`${API_ENDPOINT}/${selectedCategory.id}`, {
+        if (!editCategory) return;
+        const response = await fetch(`${API_ENDPOINT}/${editCategory.id}`, {
             method: "PUT",
             headers: {'Content-Type': "application/json"},
             body: JSON.stringify({name})
@@ -49,7 +53,7 @@ function App() {
     if (response.ok) {
         fetchCategories()
         setName("")
-        setSelectedCategory(null)
+        setEditCategory(null)
         }
     }
 
@@ -62,16 +66,17 @@ function App() {
                 placeholder = "CategoryName"
             />
 
-            {selectedCategory? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
+            {editCategory? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
             
             <ul>
                 {categories.map(category => (
                     <li>{category.name}
+                    <button onClick = {() => Items(category.id)}>Select</button>
                     <button onClick = {() => handleDelete(category.id)}>Delete</button>
                     <button onClick = {() => {
                         setName(category.name)
-                        setSelectedCategory(category)
-                    } }>Select</button>
+                        setEditCategory(category)
+                    } }>Edit Category</button>
                     </li>
                 ))}
             </ul>
