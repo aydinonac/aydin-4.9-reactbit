@@ -89,9 +89,8 @@ export default function Items(selectedCat) {
             <h1>Items CRUD</h1>
             <input 
                 value = {name}
-                onChange = {(e) => setName(e.target.value)}
-                placeholder = "ItemName"
-            />
+                onChange = {(e) => setName(e.target.value)} />
+            {/* todo...edit other details */}
 
             {setEditItem? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
             

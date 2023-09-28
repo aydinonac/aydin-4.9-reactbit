@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Items from './Items'
 
 const API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/categories"
-
+const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com"
 
 function App() {
     const [categories, setCategories] = useState([]);
@@ -34,7 +34,11 @@ function App() {
         }
     }
 // To be done...go to Items component with parameter of category.id
-    // const handleSelect = async(category.id) => {}
+    const handleSelect = async(categoryId) => {
+        const response = await fetch(`${BASE_API_ENDPOINT}/items/${categoryId}`)
+        const data = await response.json()
+        setCategories(data)
+    }
 
     const handleDelete = async(categoryId) => {
         const response = await fetch(`${API_ENDPOINT}/${categoryId}`,{
@@ -71,7 +75,7 @@ function App() {
             <ul>
                 {categories.map(category => (
                     <li>{category.name}
-                    <button onClick = {() => Items(category.id)}>Select</button>
+                    <button onClick = {() => handleSelect(category.id)}>Select</button>
                     <button onClick = {() => handleDelete(category.id)}>Delete</button>
                     <button onClick = {() => {
                         setName(category.name)
