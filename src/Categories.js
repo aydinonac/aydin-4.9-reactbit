@@ -3,7 +3,7 @@ import Items from './Items'
 import { useParams, useNavigate } from 'react-router-dom';
 
 const API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/categories"
-const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com"
+const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
 
 function Categories() {
   const [categories, setCategories] = useState([]);

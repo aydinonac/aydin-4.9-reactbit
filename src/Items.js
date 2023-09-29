@@ -90,7 +90,7 @@ export default function Items(selectedCat) {
         <div>
             <h1>Items CRUD</h1>
             <input 
-                value = {name}
+                value = {category_id}
                 onChange = {(e) => setName(e.target.value)}
                 placeholder = "Item Name"/>
             {/* todo...edit other details */}
