@@ -58,15 +58,15 @@ function App() {
         }
     }
     // To be done...go to Items component with parameter of category.id
-    const handleSelect = (categoryId) => {navigate("/Items")
-        console.log("category_id", categoryId)
-        const response = await fetch(`${BASE_API_ENDPOINT}/items/${categoryId}`)
-        const data = await response.json()
-        console.log("data", data)
-        // setCategories(data)
-        if (response.ok) {setItems(data)}
-        console.log(items)
-    }
+    const handleSelect = (categoryId) => {console.log("category_id", categoryId)}
+    // navigate("/Items")      
+    //     const response = await fetch(`${BASE_API_ENDPOINT}/items/${categoryId}`)
+    //     const data = await response.json()
+    //     console.log("data", data)
+    //     // setCategories(data)
+    //     if (response.ok) {setItems(data)}
+    //     console.log(items)
+    // }
 
     return(
         <div>
