@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
 
 // All of the edit functions for Admin only. Users should only be able to select and/or purchase
 
 export default function Items(selectedCat) {
+    const navigate = useNavigate();
     const [items, setItems] = useState([]);
     const [editItem, setEditItem] = useState({})
     const [name, setName] = useState('')
@@ -111,6 +113,7 @@ export default function Items(selectedCat) {
                     </li>
                 ))}
             </ul>
+            <button onClick={() => {navigate('/');}}>Back</button> 
         </div>
     )
 }
