@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
+const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
 
 // All of the edit functions for Admin only. Users should only be able to select and/or purchase
 
@@ -21,7 +21,7 @@ export default function Items(selectedCat) {
 
 // todo...only want items related to specific category
     const fetchItems = async() => {
-        const response = await fetch(API_ENDPOINT)
+        const response = await fetch(BASE_API_ENDPOINT)
         const data = await response.json()
         setItems(data)
     }
@@ -36,7 +36,7 @@ export default function Items(selectedCat) {
     }
 
     const handleCreate = async() => {
-        const response = await fetch(API_ENDPOINT, {
+        const response = await fetch(BASE_API_ENDPOINT, {
             method: "POST",
             headers: {'Content-Type': "application/json"},
             body: JSON.stringify({
@@ -59,7 +59,7 @@ export default function Items(selectedCat) {
     const handlePurchase = async(categoryId) => {}
 
     const handleDelete = async(itemId) => {
-        const response = await fetch(`${API_ENDPOINT}/${itemId}`,{
+        const response = await fetch(`${BASE_API_ENDPOINT}/${itemId}`,{
             method: "DELETE"
         })
         if (response.ok) {fetchItems()}
@@ -67,7 +67,7 @@ export default function Items(selectedCat) {
 
     const handleUpdate = async() => {
         if (!editItem) return;
-        const response = await fetch(`${API_ENDPOINT}/${editItem.id}`, {
+        const response = await fetch(`${BASE_API_ENDPOINT}/${editItem.id}`, {
             method: "PUT",
             headers: {'Content-Type': "application/json"},
             body: JSON.stringify({
@@ -89,7 +89,8 @@ export default function Items(selectedCat) {
             <h1>Items CRUD</h1>
             <input 
                 value = {name}
-                onChange = {(e) => setName(e.target.value)} />
+                onChange = {(e) => setName(e.target.value)}
+                placeholder = "Item Name"/>
             {/* todo...edit other details */}
 
             {setEditItem? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
