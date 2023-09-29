@@ -33,6 +33,7 @@ export default function Items(selectedCat) {
         return (
           cat.category_id === 7
         )}
+      console.log([catItems])
     }
 
     const handleCreate = async() => {
