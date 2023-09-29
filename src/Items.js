@@ -15,6 +15,7 @@ export default function Items(selectedCat) {
     const [category_id, setCategory_id] = useState('')
     const [selectItem, setSelectItem] = useState(null)
     const [purchaseItem, setPurchaseItem] = useState(false)
+    const [catItems, setCatItems] = useState([])
 
     //hydrate = brings in data, makes available to be rendered in browser (like displaying in console)//
     useEffect(() => {
@@ -22,19 +23,16 @@ export default function Items(selectedCat) {
     }, [])
 
 // todo...only want items related to specific category
-    const fetchItems = async() => {
-        const response = await fetch(BASE_API_ENDPOINT)
-        const data = await response.json()
-        setItems(data)
-    }
-    const findItems = async () => {
-        const result = await Items.findAll({
-            attributes: ['name', 'price', 'description', 'category_id'],
-            include:  [{
-                association: 'category',
-                where: {'$category.name$': selectedCat}
-            }]
-        });
+    const fetchItems = async() => { 
+      const response = await fetch(BASE_API_ENDPOINT)
+      const data = await response.json()
+      setItems(data)
+      console.log([items])
+      setCatItems(items.filter(findCat))
+      function findCat(cat) {
+        return (
+          cat.category_id === 7
+        )}
     }
 
     const handleCreate = async() => {
@@ -90,7 +88,7 @@ export default function Items(selectedCat) {
         <div>
             <h1>Items CRUD</h1>
             <input 
-                value = {category_id}
+                value = {name}
                 onChange = {(e) => setName(e.target.value)}
                 placeholder = "Item Name"/>
             {/* todo...edit other details */}
@@ -98,8 +96,8 @@ export default function Items(selectedCat) {
             {setEditItem? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
             
             <ul>
-                {items.map(item => (
-                    <li>{item.name}
+                {catItems.map(item => (
+                    <li>{item.name + " (Category:  " +  item.category_id + ") "}
                     <button onClick = {() => handleSelect(item.id)}>Select</button>
                     <button onClick = {() => handleDelete(item.id)}>Delete</button>
                     <button onClick = {() => handlePurchase(item.id)}>Purchase</button>
