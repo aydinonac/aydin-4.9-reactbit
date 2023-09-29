@@ -58,7 +58,7 @@ function App() {
         }
     }
     // To be done...go to Items component with parameter of category.id
-    const handleSelect = (categoryId) => {console.log("category_id", categoryId)}
+    // const handleSelect = (categoryId) => {console.log("category_id", categoryId)}
     // navigate("/Items")      
     //     const response = await fetch(`${BASE_API_ENDPOINT}/items/${categoryId}`)
     //     const data = await response.json()
@@ -82,7 +82,7 @@ function App() {
             <ul>
                 {categories.map(category => (
                     <li>{category.name}
-                    <button onClick = {() => handleSelect(category.id)}>Select</button>
+                    {/* <button onClick = {() => handleSelect(category.id)}>Select</button> */}
                     <button onClick = {() => handleDelete(category.id)}>Delete</button>
                     <button onClick = {() => {
                         setName(category.name)
