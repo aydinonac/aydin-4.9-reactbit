@@ -87,7 +87,7 @@ function App() {
                     <button onClick = {() => {
                         setName(category.name)
                         setEditCategory(category)
-                    } }>Edit Category</button>
+                    } }>Edit Categor</button>
                     </li>
                 ))}
             </ul>
