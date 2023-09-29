@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useNavigate} from "react-router-dom";
 import Items from './Items'
 
 const API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/categories"
@@ -6,9 +7,11 @@ const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com"
 
 function App() {
     const [categories, setCategories] = useState([]);
+    const [items, setItems] = useState([]);
     const [editCategory, setEditCategory] = useState(null)
     const [name, setName] = useState('')
     const [selectCategory, setSelectCategory] = useState(null)
+    const navigate = useNavigate();
 
     //hydrate = brings in data, makes available to be rendered in browser (like displaying in console)//
     useEffect(() => {
@@ -33,12 +36,6 @@ function App() {
             setEditCategory(null)
         }
     }
-// To be done...go to Items component with parameter of category.id
-    const handleSelect = async(categoryId) => {
-        const response = await fetch(`${BASE_API_ENDPOINT}/items/${categoryId}`)
-        const data = await response.json()
-        setCategories(data)
-    }
 
     const handleDelete = async(categoryId) => {
         const response = await fetch(`${API_ENDPOINT}/${categoryId}`,{
@@ -59,6 +56,16 @@ function App() {
         setName("")
         setEditCategory(null)
         }
+    }
+    // To be done...go to Items component with parameter of category.id
+    const handleSelect = (categoryId) => {navigate("/Items")
+        console.log("category_id", categoryId)
+        const response = await fetch(`${BASE_API_ENDPOINT}/items/${categoryId}`)
+        const data = await response.json()
+        console.log("data", data)
+        // setCategories(data)
+        if (response.ok) {setItems(data)}
+        console.log(items)
     }
 
     return(
