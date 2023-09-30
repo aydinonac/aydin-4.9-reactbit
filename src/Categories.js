@@ -8,7 +8,7 @@ const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
-  const [editCategory, setEditCategory] = useState(null)
+  const [editCategory, setEditCategory] = useState(false)
   const [name, setName] = useState('')
   const [selectCategory, setSelectCategory] = useState(null)
   const navigate = useNavigate();
@@ -57,21 +57,10 @@ function Categories() {
     setEditCategory(null)
     }
   }
-  // To be done...go to Items component with parameter of category.id
-  const handleSelect = (categoryId) => {
-    
-    console.log("category_id", categoryId)
-      
-  //     const response = await fetch(`${BASE_API_ENDPOINT}/items/${categoryId}`)
-  //     const data = await response.json()
-  //     console.log("data", data)
-  //     if (response.ok) {setItems(data)}
-  //     console.log(items)
-    }
 
     return(
       <div>
-        <h1>Categories CRUD</h1>
+        <h1>Music Categories</h1>
         <input 
             value = {name}
             onChange = {(e) => setName(e.target.value)}
@@ -83,12 +72,15 @@ function Categories() {
         <ul>
           {categories.map(category => (
             <li>{category.name}
-        <button onClick={() => {navigate('/items');}}>Select</button> 
-        <button onClick = {() => handleDelete(category.id)}>Delete</button>
+            <button onClick={() => {navigate('/items', {
+              state: {selectedCat: category.id, selectedName: category.name}
+                });
+              }}>Select</button> 
+            <button onClick = {() => handleDelete(category.id)}>Delete</button>
             <button onClick = {() => {
                 setName(category.name)
                 setEditCategory(category)
-            } }>Edit Category</button>
+              } }>Edit Category</button>
             </li>
           ))}
         </ul>
