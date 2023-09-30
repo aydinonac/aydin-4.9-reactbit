@@ -86,15 +86,40 @@ export default function Items() {
   }
 
   return(
-    <div>
-      <h1>Category {selectedCat} : {selectedName}</h1>
-      <form>
-        <label>Enter the name:
+    <div style = {{background: "skyblue"}}>
+      <h1 style={{color: "blue", padding: "10px"}}> Category {selectedCat} : {selectedName}</h1>   
+      <ul style={{border: "2px solid maroon",  background: "pink", padding: "5px", margin: "10px"}}>
+        {catItems.map(item => (
+          <li><span style={{color: "blue", fontSize: "20px"}}>{item.name}</span><span>{" by  " +  item.description}</span>
+            <p><button style={{margin: "10px"}} onClick = {() => handleSelect(item.id)}>Select</button>
+            <button  style={{margin: "10px"}} onClick = {() => handleDelete(item.id)}>Delete</button>
+            <button  style={{margin: "10px"}} onClick = {() => {
+              setName(item.name)
+              setPrice(item.price)
+              setDescription(item.description)
+              // setCategoryId(item.category_id)
+              setEditItem(item)
+            }}>Edit Item</button>
+            <button  style={{margin: "10px"}} onClick = {() => handlePurchase(item.id)}>Purchase</button>
+            </p>
+          </li>
+        ))}
+      </ul>
+      <br/>
+      {editItem? <button onClick={handleUpdate} 
+        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Update the details below then click this button to edit this item:</button> 
+        : <button onClick={handleCreate}
+        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Complete the details below then click this button to add a new item:</button>}
+
+      <form style={{border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
+        <label style={{margin: "10px"}} >Enter the name:{"....... "}
           <input
             type="text" 
             value={name}
             onChange={(e) => setName(e.target.value)}
-          />
+          /><br/>
         </label>
         {/* <label>Enter category id number:
           <input
@@ -103,14 +128,14 @@ export default function Items() {
             onChange={(e) => setCategoryId(e.target.value)}
           />
         </label> */}
-        <label>Enter the price:
+        <label style={{margin: "10px"}} >Enter the price: {"........"}
           <input
             type="text" 
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-          />
+          /><br/>
         </label>
-        <label>Enter description:
+        <label style={{margin: "10px"}} >Enter the composer:{" "}
           <input
             type="text" 
             value={description}
@@ -118,27 +143,7 @@ export default function Items() {
           />
         </label>
       </form>
-      {/* todo...edit other details */}
-
-      {editItem? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
-      
-      <ul>
-        {catItems.map(item => (
-          <li>{item.name + " (Category_id:  " +  item.category_id + ") "}
-          <button onClick = {() => handleSelect(item.id)}>Select</button>
-          <button onClick = {() => handleDelete(item.id)}>Delete</button>
-          <button onClick = {() => handlePurchase(item.id)}>Purchase</button>
-          <button onClick = {() => {
-            setName(item.name)
-            setPrice(item.price)
-            setDescription(item.description)
-            // setCategoryId(item.category_id)
-            setEditItem(item)
-          }}>Edit Item</button>
-          </li>
-        ))}
-      </ul>
-      <button onClick={() => {navigate('/');}}>Back</button> 
+      <button  style={{margin: "10px", fontSize: "20px", background: "lightGreen"}} onClick={() => {navigate('/');}}>Back</button> 
     </div>
   )
 }

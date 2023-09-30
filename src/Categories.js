@@ -59,31 +59,36 @@ function Categories() {
   }
 
     return(
-      <div>
-        <h1>Music Categories</h1>
-        <input 
+      <div style = {{background: "skyblue"}}>
+        <h1 style={{color: "blue", padding: "10px"}}>Music Categories</h1>
+ 
+        <ul style={{border: "2px solid maroon",  background: "pink", padding: "5px", margin: "10px"}}>
+          {categories.map(category => (
+            <li><span style={{color: "blue", fontSize: "20px"}}>{category.name}</span>
+              <button style={{margin: "5px"}} onClick={() => {navigate('/items', {
+              state: {selectedCat: category.id, selectedName: category.name}
+                });
+              }}>Select</button> 
+              <button style={{margin: "5px"}} onClick = {() => handleDelete(category.id)}>Delete</button>
+              <button style={{margin: "5px"}} onClick = {() => {
+                setName(category.name)
+                setEditCategory(category)
+              }}>Edit Category</button>
+            </li>
+          ))}
+        </ul>
+        <br/>
+        <p style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: '5px'}}>
+          Complete the details below to add or update a category</p>
+          <input
+            style={{margin: "10px", fontSize: "15px"}} 
             value = {name}
             onChange = {(e) => setName(e.target.value)}
             placeholder = "CategoryName"
         />
 
         {editCategory? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
-          
-        <ul>
-          {categories.map(category => (
-            <li>{category.name}
-            <button onClick={() => {navigate('/items', {
-              state: {selectedCat: category.id, selectedName: category.name}
-                });
-              }}>Select</button> 
-            <button onClick = {() => handleDelete(category.id)}>Delete</button>
-            <button onClick = {() => {
-                setName(category.name)
-                setEditCategory(category)
-              } }>Edit Category</button>
-            </li>
-          ))}
-        </ul>
+         
       </div>
     )
 }
