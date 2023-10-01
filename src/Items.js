@@ -90,7 +90,7 @@ export default function Items() {
       <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>BeeBuy Category {selectedCat} : {selectedName}</b></span>   
       <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "30px"}}
         onClick={() => {navigate('/');}}>Back</button> 
-      <ul style={{border: "2px solid maroon",  background: "lightgreen", padding: "5px", margin: "10px"}}>
+      <ul style={{border: "2px solid maroon",  background: "#faca4d", padding: "5px", margin: "10px"}}>
         {catItems.map(item => (
           <li><span style={{color: "blue", fontSize: "25px"}}>{item.name}</span><br/><span>{item.description}</span>
             <p><button style={{margin: "10px"}} onClick = {() => handleSelect(item.id)}>Select</button>
@@ -116,7 +116,7 @@ export default function Items() {
         Complete the details below then click this button to add a new item:</button>}
 
       <form style={{border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
-        <label style={{margin: "10px"}} >Enter the name:{"....... "}
+        <label style={{margin: "10px"}} >Enter the name:{"......... "}
           <input
             type="text" 
             value={name}
@@ -130,7 +130,7 @@ export default function Items() {
             onChange={(e) => setCategoryId(e.target.value)}
           />
         </label> */}
-        <label style={{margin: "10px"}} >Enter the price: {"........"}
+        <label style={{margin: "10px"}} >Enter the price: {".........."}
           <input
             type="text" 
             value={price}
