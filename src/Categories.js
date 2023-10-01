@@ -60,9 +60,9 @@ function Categories() {
 
     return(
       <div style = {{background: "skyblue"}}>
-        <h1 style={{color: "blue", padding: "10px"}}>Music Categories</h1>
+        <h1 style={{color: "blue", padding: "10px"}}>BeeBuy Categories</h1>
  
-        <ul style={{border: "2px solid maroon",  background: "pink", padding: "5px", margin: "10px"}}>
+        <ul style={{border: "2px solid maroon",  background: "lightgreen", padding: "5px", margin: "10px"}}>
           {categories.map(category => (
             <li><span style={{color: "blue", fontSize: "20px"}}>{category.name}</span>
               <button style={{margin: "5px"}} onClick={() => {navigate('/items', {
