@@ -86,8 +86,10 @@ export default function Items() {
   }
 
   return(
-    <div style = {{background: "skyblue"}}>
-      <h1 style={{color: "blue", padding: "10px"}}> BeeBuy Category {selectedCat} : {selectedName}</h1>   
+    <div style = {{background: "skyblue"}}><br/>
+      <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>BeeBuy Category {selectedCat} : {selectedName}</b></span>   
+      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "30px"}}
+        onClick={() => {navigate('/');}}>Back</button> 
       <ul style={{border: "2px solid maroon",  background: "lightgreen", padding: "5px", margin: "10px"}}>
         {catItems.map(item => (
           <li><span style={{color: "blue", fontSize: "25px"}}>{item.name}</span><br/><span>{item.description}</span>
@@ -143,7 +145,6 @@ export default function Items() {
           />
         </label>
       </form>
-      <button  style={{margin: "10px", fontSize: "20px", background: "lightGreen"}} onClick={() => {navigate('/');}}>Back</button> 
     </div>
   )
 }
