@@ -64,7 +64,7 @@ function Categories() {
  
         <ul style={{border: "2px solid maroon",  background: "lightgreen", padding: "5px", margin: "10px"}}>
           {categories.map(category => (
-            <li><span style={{color: "blue", fontSize: "20px"}}>{category.name}</span>
+            <li><span style={{color: "blue", fontSize: "25px"}}>{category.name}</span>
               <button style={{margin: "5px"}} onClick={() => {navigate('/items', {
               state: {selectedCat: category.id, selectedName: category.name}
                 });
