@@ -39,7 +39,7 @@ function Categories() {
 
   const handleDelete = async(categoryId) => {
     const response = await fetch(`${API_ENDPOINT}/${categoryId}`,{
-        method: "DELETE"
+      method: "DELETE"
     })
     if (response.ok) {fetchCategories()}
   }
