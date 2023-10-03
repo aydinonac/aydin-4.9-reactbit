@@ -58,20 +58,26 @@ function Categories() {
     }
   }
 
-    return(
-      <div style = {{background: "skyblue"}}>
-        <h1 style={{color: "blue", padding: "10px"}}>BeeBuy Market-place</h1>
+  return(
+    <div style = {{background: "skyblue"}}>
+      <div>
+        {/* Heading */}
+        <h1 style={{color: "blue", padding: "10px"}}>Market-place</h1>
         <p style={{color: "black", padding: "10px", background: "white",
         border: "2px solid black", margin: "10px"}}>
-          Welcome to BeeBuy - the perfect place for all your 'Bee' shopping needs.
+          Welcome to Market-place - the perfect place for all your 'Pet' shopping needs.
           We hope that you will find exactly what you are looking for.
           All of our products are top quality with very competitive prices and discounts.
           Just select a category, below, and you can browse through our range of items.
           Happy shopping!</p>
-        <h1 style={{color: "blue", padding: "10px"}}>BeeBuy Categories</h1>
- 
+      </div>
+
+      <div>
+        {/* Bee section */}
+        <h1 style={{color: "blue", padding: "10px"}}>Bee Categories</h1>
         <ul style={{listStyleType: "none", border: "2px solid black",  background: "lightgreen",
             padding: "5px", margin: "10px"}}>
+              
           {categories.map(category => (
             <li><span style={{color: "blue", fontSize: "25px"}}>{category.name}</span>
               <button style={{margin: "5px"}} onClick={() => {navigate('/items', {
@@ -87,19 +93,39 @@ function Categories() {
           ))}
         </ul>
         <br/>
-        <p style={{margin: "10px", border: "2px solid blue", color: "white",
+        <span style={{margin: "10px", border: "2px solid blue", color: "white",
             background: "dodgerblue", padding: '5px'}}>
-          Complete the details below to add or update a category</p>
+          Complete the details to add or update a category
           <input
             style={{margin: "10px", fontSize: "15px"}} 
             value = {name}
             onChange = {(e) => setName(e.target.value)}
             placeholder = "CategoryName"
           />
-
+        
         {editCategory? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
-         
+        </span>
       </div>
-    )
+
+      <div>
+        {/* Dog section */}
+        <h1 style={{color: "blue", padding: "10px"}}>Dog Categories 
+          <span style={{color: "black", padding: "3px", background: "#dddddd",
+          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>
+       
+        <h1 style={{color: "blue", padding: "10px"}}>Bird Categories
+          <span style={{color: "black", padding: "3px", background: "#dddddd",
+          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>
+        
+        <h1 style={{color: "blue", padding: "10px"}}>Cat Categories
+          <span style={{color: "black", padding: "3px", background: "#dddddd",
+          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>
+       
+        <h1 style={{color: "blue", padding: "10px"}}>Hedge-hog Categories
+         <span style={{color: "black", padding: "3px", background: "#dddddd",
+          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>  
+      </div>
+    </div> 
+  )
 }
 export default Categories
