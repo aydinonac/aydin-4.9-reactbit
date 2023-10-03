@@ -60,9 +60,18 @@ function Categories() {
 
     return(
       <div style = {{background: "skyblue"}}>
+        <h1 style={{color: "blue", padding: "10px"}}>BeeBuy Market-place</h1>
+        <p style={{color: "black", padding: "10px", background: "white",
+        border: "2px solid black", margin: "10px"}}>
+          Welcome to BeeBuy - the perfect place for all your 'Bee' shopping needs.
+          We hope that you will find exactly what you are looking for.
+          All of our products are top quality with very competitive prices and discounts.
+          Just select a category, below, and you can browse through our range of items.
+          Happy shopping!</p>
         <h1 style={{color: "blue", padding: "10px"}}>BeeBuy Categories</h1>
  
-        <ul style={{border: "2px solid maroon",  background: "lightgreen", padding: "5px", margin: "10px"}}>
+        <ul style={{listStyleType: "none", border: "2px solid black",  background: "lightgreen",
+            padding: "5px", margin: "10px"}}>
           {categories.map(category => (
             <li><span style={{color: "blue", fontSize: "25px"}}>{category.name}</span>
               <button style={{margin: "5px"}} onClick={() => {navigate('/items', {
@@ -78,14 +87,15 @@ function Categories() {
           ))}
         </ul>
         <br/>
-        <p style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: '5px'}}>
+        <p style={{margin: "10px", border: "2px solid blue", color: "white",
+            background: "dodgerblue", padding: '5px'}}>
           Complete the details below to add or update a category</p>
           <input
             style={{margin: "10px", fontSize: "15px"}} 
             value = {name}
             onChange = {(e) => setName(e.target.value)}
             placeholder = "CategoryName"
-        />
+          />
 
         {editCategory? <button onClick={handleUpdate}>Update</button> : <button onClick={handleCreate}>Create</button>}
          

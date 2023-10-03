@@ -90,7 +90,8 @@ export default function Items() {
       <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>BeeBuy: {selectedName}</b></span>   
       <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
         onClick={() => {navigate('/');}}>Back</button> 
-      <ul style={{border: "2px solid maroon",  background: "#faca4d", padding: "5px", margin: "10px"}}>
+      <ul style={{listStyleType: "none", border: "2px solid maroon",
+        background: "#faca4d", padding: "5px", margin: "10px"}}>
         {catItems.map(item => (
           <li><span style={{color: "blue", fontSize: "25px"}}>{item.name}</span><br/><span>{item.description}</span>
             <p><button style={{margin: "10px"}} onClick = {() => handleSelect(item.id)}>Select</button>
