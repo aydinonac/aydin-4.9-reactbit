@@ -19,8 +19,8 @@ export default function Items() {
   const [selectItem, setSelectItem] = useState(null)
   const [purchaseItem, setPurchaseItem] = useState(false)
   const [catItems, setCatItems] = useState([])
-  console.log(selectedCat)
-  console.log(selectedName)
+  // console.log(selectedCat)
+  // console.log(selectedName)
   //hydrate = brings in data, makes available to be rendered in browser (like displaying in console)//
   useEffect(() => {
       fetchItems()
@@ -31,9 +31,7 @@ export default function Items() {
     const response = await fetch(BASE_API_ENDPOINT)
     const data = await response.json()
     setCatItems(data.filter(findCat))
-    // setItems(data)
   }
-  console.log(items)
   const findCat = (cat) => {
     return cat.category_id === selectedCat
   }

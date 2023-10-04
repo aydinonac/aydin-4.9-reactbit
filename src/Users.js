@@ -12,6 +12,7 @@ export default function Users() {
   const [pwd, setPwd] = useState('')
   const [tel, setTel] = useState(0)
   const [editUser, setEditUser] = useState(false)
+  const [arrayUsers, setArrayUsers] = useState([]);
   const navigate = useNavigate();
    
   // hydrate = brings in data, makes available to be rendered in browser (like displaying in console)//
@@ -22,20 +23,20 @@ export default function Users() {
   const fetchUsers = async() => {
     const response = await fetch(USERS_API_ENDPOINT)
     const data = await response.json()
-    setUsers(data)
+    setArrayUsers(data)
   }
 
   const handleCreate = async() => {
     const response = await fetch(USERS_API_ENDPOINT, {
       method: "POST",
       headers: {'Content-Type': "application/json"},
-      body: JSON.stringify(
-          {firstName,
-          lastName,
-          address,
-          email,
-          pwd,
-          tel
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        address,
+        email,
+        pwd,
+        tel
       })
     })
     if (response.ok) {
@@ -91,7 +92,7 @@ export default function Users() {
       <ul style={{listStyleType: "none", border: "2px solid maroon",
         background: "#faca4d", padding: "5px", margin: "10px"}}>
         
-        {users.map(user => (
+        {arrayUsers.map(user => (
           <li><span style={{color: "blue", fontSize: "25px"}}>{user.firstName}, {user.lastName}, 
           {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
 
@@ -119,8 +120,8 @@ export default function Users() {
         Complete the details below then click this button to create a new User:</button>}
 
       <form style={{border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
+        
         <label style={{margin: "10px"}} >Enter firstName:{"........ "}
-          
           <input
             type="text" 
             value={firstName}
