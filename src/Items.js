@@ -92,6 +92,7 @@ export default function Items() {
         onClick={() => {navigate('/');}}>Back</button> 
       <ul style={{listStyleType: "none", border: "2px solid maroon",
         background: "#faca4d", padding: "5px", margin: "10px"}}>
+        
         {catItems.map(item => (
           <li><span style={{color: "blue", fontSize: "25px"}}>{item.name}</span><br/><span>{item.description}</span>
             <p><button style={{margin: "10px"}} onClick = {() => handleSelect(item.id)}>Select</button>

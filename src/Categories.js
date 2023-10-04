@@ -33,7 +33,7 @@ function Categories() {
     if (response.ok) {
         fetchCategories()
         setName("")
-        setEditCategory(null)
+        setEditCategory(false)
     }
   }
 
@@ -62,7 +62,10 @@ function Categories() {
     <div style = {{background: "skyblue"}}>
       <div>
         {/* Heading */}
-        <h1 style={{color: "blue", padding: "10px"}}>Market-place</h1>
+        <br/>
+        <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Market-place</b></span>   
+        <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
+        onClick={() => {navigate('/users');}}>Go to Users</button> 
         <p style={{color: "black", padding: "10px", background: "white",
         border: "2px solid black", margin: "10px"}}>
           Welcome to Market-place - the perfect place for all your 'Pet' shopping needs.
