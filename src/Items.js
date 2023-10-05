@@ -66,8 +66,9 @@ export default function Items() {
     if (response.ok) {fetchItems()}
   }
 
-  const handleUpdate = async(editItem) => {
+  const handleUpdate = async() => {
     if (!editItem) return;
+    console.log(name);
     const response = await fetch(`${BASE_API_ENDPOINT}/${editItem.id}`, {
       method: "PUT",
       headers: {'Content-Type': "application/json"},

@@ -104,7 +104,7 @@ export default function Users() {
               setEmail(user.email)
               setPwd(user.pwd)
               setTel(user.tel)
-              setEditUser(true)
+              setEditUser(user)
             }}>Edit User</button>
             </p>
           </li>
