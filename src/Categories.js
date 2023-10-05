@@ -8,7 +8,7 @@ const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
-  const [editCategory, setEditCategory] = useState(false)
+  const [editCategory, setEditCategory] = useState(null)
   const [name, setName] = useState('')
   const [selectCategory, setSelectCategory] = useState(null)
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function Categories() {
     if (response.ok) {
         fetchCategories()
         setName("")
-        setEditCategory(false)
+        setEditCategory(null)
     }
   }
 

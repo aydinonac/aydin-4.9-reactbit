@@ -41,7 +41,7 @@ export default function Users() {
     })
     console.log(response)
     if (response.ok) {
-      // fetchUsers()
+      fetchUsers()
       setFirstName('')
       setLasttName('')
       setAddress('')
@@ -94,9 +94,7 @@ export default function Users() {
         background: "#faca4d", padding: "5px", margin: "10px"}}>
         
         {users.map(user => (
-          <li><span style={{color: "blue", fontSize: "25px"}}>{user.firstName}, {user.lasttName}, 
-          {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
-
+          <li><span style={{color: "blue", fontSize: "25px"}}>{user.firstName}, {user.lasttName}, {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
             <p>
             <button  style={{margin: "10px"}} onClick = {() => handleDelete(user.id)}>Delete</button>
             <button  style={{margin: "10px"}} onClick = {() => {

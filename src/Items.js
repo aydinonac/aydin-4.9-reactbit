@@ -11,7 +11,7 @@ export default function Items() {
   const {selectedCat, selectedName} = state;
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
-  const [editItem, setEditItem] = useState(false)
+  const [editItem, setEditItem] = useState(null)
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
@@ -49,6 +49,7 @@ export default function Items() {
     })
     if (response.ok) {
       fetchItems()
+      setEditItem(null)
     }
   }
 // To be done...show different views...
@@ -65,7 +66,7 @@ export default function Items() {
     if (response.ok) {fetchItems()}
   }
 
-  const handleUpdate = async() => {
+  const handleUpdate = async(editItem) => {
     if (!editItem) return;
     const response = await fetch(`${BASE_API_ENDPOINT}/${editItem.id}`, {
       method: "PUT",
@@ -79,7 +80,11 @@ export default function Items() {
     })
     if (response.ok) {
       fetchItems()
-      setEditItem(false)
+      setName('')
+      setPrice('')
+      setDescription('')
+      setCategory_id('')
+      setEditItem(null)
     }
   }
 
@@ -99,8 +104,8 @@ export default function Items() {
               setName(item.name)
               setPrice(item.price)
               setDescription(item.description)
-              // setCategoryId(item.category_id)
-              setEditItem(true)
+              setCategory_id(item.category_id)
+              setEditItem(item)
             }}>Edit Item</button>
             <button  style={{margin: "10px"}} onClick = {() => handlePurchase(item.id)}>Purchase</button>
             </p>
@@ -108,43 +113,41 @@ export default function Items() {
         ))}
       </ul>
       <br/>
-      {editItem? <button onClick={handleUpdate} 
-        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
-        Update the details below then click this button to edit this item:</button> 
-        : <button onClick={handleCreate}
-        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
-        Complete the details below then click this button to add a new item:</button>}
 
       <form style={{border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
+        
         <label style={{margin: "10px"}} >Enter the name:{"......... "}
           <input
-            type="text" 
+            type="STRING" 
             value={name}
             onChange={(e) => setName(e.target.value)}
           /><br/>
         </label>
-        {/* <label>Enter category id number:
-          <input
-            type="text" 
-            value={categoryId}
-            onChange={(e) => setCategoryId(e.target.value)}
-          />
-        </label> */}
+
         <label style={{margin: "10px"}} >Enter the price: {".........."}
           <input
-            type="text" 
+            type="DECIMAL(10,2)" 
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           /><br/>
         </label>
+       
         <label style={{margin: "10px"}} >Enter the description:{" "}
           <input
-            type="text" 
+            type="TEXT" 
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
+
       </form>
+
+      {editItem? <button onClick={handleUpdate} 
+        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Update the details above then click this button to edit this item:</button> 
+        : <button onClick={handleCreate}
+        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Complete the details above then click this button to add a new item:</button>}
     </div>
   )
 }
