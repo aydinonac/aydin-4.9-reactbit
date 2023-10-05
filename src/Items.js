@@ -47,7 +47,6 @@ export default function Items() {
         category_id 
       })
     })
-    console.log(response)
     if (response.ok) {
       fetchItems()
     }
@@ -62,6 +61,7 @@ export default function Items() {
     const response = await fetch(`${BASE_API_ENDPOINT}/${itemId}`,{
       method: "DELETE"
     })
+    console.log(itemId)
     if (response.ok) {fetchItems()}
   }
 
@@ -100,7 +100,7 @@ export default function Items() {
               setPrice(item.price)
               setDescription(item.description)
               // setCategoryId(item.category_id)
-              setEditItem(item)
+              setEditItem(true)
             }}>Edit Item</button>
             <button  style={{margin: "10px"}} onClick = {() => handlePurchase(item.id)}>Purchase</button>
             </p>

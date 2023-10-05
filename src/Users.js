@@ -6,13 +6,12 @@ const USERS_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/users"
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [lasttName, setLasttName] = useState('')
   const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
   const [pwd, setPwd] = useState('')
   const [tel, setTel] = useState(0)
   const [editUser, setEditUser] = useState(false)
-  const [arrayUsers, setArrayUsers] = useState([]);
   const navigate = useNavigate();
    
   // hydrate = brings in data, makes available to be rendered in browser (like displaying in console)//
@@ -23,7 +22,8 @@ export default function Users() {
   const fetchUsers = async() => {
     const response = await fetch(USERS_API_ENDPOINT)
     const data = await response.json()
-    setArrayUsers(data)
+    console.log(data)
+    setUsers(data)
   }
 
   const handleCreate = async() => {
@@ -32,17 +32,18 @@ export default function Users() {
       headers: {'Content-Type': "application/json"},
       body: JSON.stringify({
         firstName,
-        lastName,
+        lasttName,
         address,
         email,
         pwd,
         tel
       })
     })
+    console.log(response)
     if (response.ok) {
-      fetchUsers()
+      // fetchUsers()
       setFirstName('')
-      setLastName('')
+      setLasttName('')
       setAddress('')
       setEmail('')
       setPwd('')
@@ -65,7 +66,7 @@ export default function Users() {
       headers: {'Content-Type': "application/json"},
       body: JSON.stringify({
         firstName,
-        lastName,
+        lasttName,
         address,
         email,
         pwd,
@@ -75,7 +76,7 @@ export default function Users() {
     if (response.ok) {
       fetchUsers()
       setFirstName('')
-      setLastName('')
+      setLasttName('')
       setAddress('')
       setEmail('')
       setPwd('')
@@ -92,20 +93,20 @@ export default function Users() {
       <ul style={{listStyleType: "none", border: "2px solid maroon",
         background: "#faca4d", padding: "5px", margin: "10px"}}>
         
-        {arrayUsers.map(user => (
-          <li><span style={{color: "blue", fontSize: "25px"}}>{user.firstName}, {user.lastName}, 
+        {users.map(user => (
+          <li><span style={{color: "blue", fontSize: "25px"}}>{user.firstName}, {user.lasttName}, 
           {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
 
             <p>
             <button  style={{margin: "10px"}} onClick = {() => handleDelete(user.id)}>Delete</button>
             <button  style={{margin: "10px"}} onClick = {() => {
               setFirstName(user.firstName)
-              setLastName(user.lastName)
+              setLasttName(user.lasttName)
               setAddress(user.address)
               setEmail(user.email)
               setPwd(user.pwd)
               setTel(user.tel)
-              setEditUser(user)
+              setEditUser(true)
             }}>Edit User</button>
             </p>
           </li>
@@ -132,8 +133,8 @@ export default function Users() {
         <label style={{margin: "10px"}} >Enter lastName:{"......... "}
           <input
             type="text" 
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            value={lasttName}
+            onChange={(e) => setLasttName(e.target.value)}
           /><br/>
         </label>
         
