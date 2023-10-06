@@ -100,7 +100,7 @@ function Categories() {
         <br/>
         <span style={{fontSize: "16px", fontFamily: "helvetica", margin: "10px", border: "2px solid blue", color: "white",
             background: "dodgerblue", padding: '5px'}}>
-          Complete the details to add or update a category
+          Add or update a category
           <input
             style={{margin: "10px", fontSize: "15px"}} 
             value = {name}
