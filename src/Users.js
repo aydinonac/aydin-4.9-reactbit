@@ -88,56 +88,57 @@ export default function Users() {
   return(
     <div style = {{background: "skyblue"}}><br/>
       <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Users: </b></span>   
-      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
+      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "300px"}}
         onClick={() => {navigate('/');}}>Back</button> 
       <ul style={{listStyleType: "none", border: "2px solid maroon",
-        background: "#faca4d", padding: "5px", margin: "10px"}}>
+        background: "#eedddd", padding: "5px", margin: "10px", fontFamily: "helvetica"}}>
         
         {users.map(user => (
-          <li><span style={{color: "blue", fontSize: "25px"}}>{user.firstName}, {user.lasttName}, {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
-            <p>
-            <button  style={{margin: "10px"}} onClick = {() => handleDelete(user.id)}>Delete</button>
-            <button  style={{margin: "10px"}} onClick = {() => {
-              setFirstName(user.firstName)
-              setLasttName(user.lasttName)
-              setAddress(user.address)
-              setEmail(user.email)
-              setPwd(user.pwd)
-              setTel(user.tel)
-              setEditUser(user)
-            }}>Edit User</button>
-            </p>
+          <li><span style={{lineHeight: "0.8", color: "darkblue", fontSize: "16px"}}>{user.firstName} {user.lasttName}, {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
+            <span>
+              <button  style={{lineHeight: "0.8", margin: "10px"}} onClick = {() => handleDelete(user.id)}>Delete</button>
+              <button  style={{lineHeight: "0.8", margin: "10px"}} onClick = {() => {
+                setFirstName(user.firstName)
+                setLasttName(user.lasttName)
+                setAddress(user.address)
+                setEmail(user.email)
+                setPwd(user.pwd)
+                setTel(user.tel)
+                setEditUser(user)
+              }}>Edit</button>
+            </span>
+            <hr></hr>
           </li>
         ))}
       </ul>
       <br/>
       {editUser? <button onClick={handleUpdate} 
-        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
-        Update the details below then click this button to edit this User:</button> 
+        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Update the details below then <b>CLICK</b>  this button to edit this User:</button> 
         : <button onClick={handleCreate}
-        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
-        Complete the details below then click this button to create a new User:</button>}
+        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Put the details below then <b>CLICK</b> this button to add a new User:</button>}
 
-      <form style={{border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
+      <form style={{fontFamily: "helvetica", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
         
         <label style={{margin: "10px"}} >Enter firstName:{"........ "}
-          <input
+          <input style={{width: "300px"}}
             type="text" 
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           /><br/>
         </label>
         
-        <label style={{margin: "10px"}} >Enter lastName:{"......... "}
-          <input
+        <label style={{margin: "10px"}} >Enter lastName:{"........ "}
+          <input style={{width: "300px"}}
             type="text" 
             value={lasttName}
             onChange={(e) => setLasttName(e.target.value)}
           /><br/>
         </label>
         
-        <label style={{margin: "10px"}} >Enter address: {"............"}
-          <input
+        <label style={{margin: "10px"}} >Enter address: {"..........."}
+          <input style={{width: "300px"}}
             type="text" 
             value={address}
             onChange={(e) => setAddress(e.target.value)}
@@ -145,7 +146,7 @@ export default function Users() {
         </label>
        
         <label style={{margin: "10px"}} >Enter email:{" "}{".............. "}
-          <input
+          <input style={{width: "300px"}}
             type="text" 
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -153,7 +154,7 @@ export default function Users() {
         </label>
        
         <label style={{margin: "10px"}} >Enter pwd:{" "}{"................ "}
-          <input
+          <input style={{width: "300px"}}
             type="text" 
             value={pwd}
             onChange={(e) => setPwd(e.target.value)}
@@ -161,12 +162,13 @@ export default function Users() {
         </label>
         
         <label style={{margin: "10px"}} >Enter tel:{" "}{"................... "}
-          <input
+          <input style={{width: "300px"}}
             type="integer" 
             value={tel}
             onChange={(e) => setTel(e.target.value)}
           />
         </label>
+
       </form>
     </div>
   )

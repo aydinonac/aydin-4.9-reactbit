@@ -92,7 +92,7 @@ export default function Items() {
   return(
     <div style = {{background: "skyblue"}}><br/>
       <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Bee: {selectedName}</b></span>   
-      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
+      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "250px"}}
         onClick={() => {navigate('/');}}>Back</button> 
       <ul style={{listStyleType: "none", border: "2px solid maroon",
         background: "#faca4d", padding: "5px", margin: "10px"}}>
@@ -115,10 +115,10 @@ export default function Items() {
       </ul>
       <br/>
 
-      <form style={{border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
+      <form style={{fontFamily: "helvetica", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
         
         <label style={{margin: "10px"}} >Enter the name:{"......... "}
-          <input
+          <input style={{width: "300px"}}
             type="STRING" 
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -126,7 +126,7 @@ export default function Items() {
         </label>
 
         <label style={{margin: "10px"}} >Enter the price: {".........."}
-          <input
+          <input style={{width: "300px"}}
             type="DECIMAL(10,2)" 
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -134,7 +134,7 @@ export default function Items() {
         </label>
        
         <label style={{margin: "10px"}} >Enter the description:{" "}
-          <input
+          <input style={{width: "300px"}}
             type="TEXT" 
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -144,11 +144,11 @@ export default function Items() {
       </form>
 
       {editItem? <button onClick={handleUpdate} 
-        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
-        Update the details above then click this button to edit this item:</button> 
+        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Update the details above then <b>CLICK</b> this button to edit this item:</button> 
         : <button onClick={handleCreate}
-        style={{margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
-        Complete the details above then click this button to add a new item:</button>}
+        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        Complete the details above then <b>CLICK</b> this button to add a new item:</button>}
     </div>
   )
 }

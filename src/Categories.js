@@ -64,7 +64,7 @@ function Categories() {
         {/* Heading */}
         <br/>
         <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Market-place</b></span>   
-        <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
+        <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "150px"}}
         onClick={() => {navigate('/users');}}>Go to Users</button> 
         <p style={{color: "black", padding: "10px", background: "white",
         border: "2px solid black", margin: "10px"}}>
@@ -92,11 +92,13 @@ function Categories() {
                 setName(category.name)
                 setEditCategory(category)
               }}>Edit Category</button>
+              <hr></hr>
             </li>
+            
           ))}
         </ul>
         <br/>
-        <span style={{margin: "10px", border: "2px solid blue", color: "white",
+        <span style={{fontSize: "16px", fontFamily: "helvetica", margin: "10px", border: "2px solid blue", color: "white",
             background: "dodgerblue", padding: '5px'}}>
           Complete the details to add or update a category
           <input
