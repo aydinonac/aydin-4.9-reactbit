@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import './Users.css';
 
 const USERS_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/users"
 
@@ -87,17 +88,15 @@ export default function Users() {
 
   return(
     <div style = {{background: "skyblue"}}><br/>
-      <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Users: </b></span>   
-      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "305px"}}
+      <span className='usSpan1'><b>Users: </b></span>   
+      <button  className='usButton1'
         onClick={() => {navigate('/');}}>Back</button> 
-      <ul style={{listStyleType: "none", border: "2px solid maroon",
-        background: "#eedddd", padding: "5px", margin: "10px", fontFamily: "helvetica"}}>
-        
+      <ul className='usUl1'>
         {users.map(user => (
-          <li><span style={{lineHeight: "0.8", color: "darkblue", fontSize: "16px"}}>{user.firstName} {user.lasttName}, {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
+          <li><span className='usSpan2'>{user.firstName} {user.lasttName}, {user.address}, {user.email}, {user.pwd}, {user.tel}</span>
             <span>
-              <button  style={{lineHeight: "0.8", margin: "10px"}} onClick = {() => handleDelete(user.id)}>Delete</button>
-              <button  style={{lineHeight: "0.8", margin: "10px"}} onClick = {() => {
+              <button  className='usButton3' onClick = {() => handleDelete(user.id)}>Delete</button>
+              <button  className='usButton3' onClick = {() => {
                 setFirstName(user.firstName)
                 setLasttName(user.lasttName)
                 setAddress(user.address)
@@ -112,14 +111,12 @@ export default function Users() {
         ))}
       </ul>
       <br/>
-      {editUser? <button onClick={handleUpdate} 
-        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+      {editUser? <button onClick={handleUpdate} className='usButton2'>
         Update the details below then <b>CLICK</b>  this button to edit this User:</button> 
-        : <button onClick={handleCreate}
-        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        : <button onClick={handleCreate} className='usButton2'>
         Put the details below then <b>CLICK</b> this button to add a new User:</button>}
 
-      <form style={{fontFamily: "helvetica", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
+      <form className='usButton2'>
         
         <label style={{margin: "10px"}} >Enter firstName:{"........ "}
           <input style={{width: "300px"}}

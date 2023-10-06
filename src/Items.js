@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Categories from './Categories'
+import './Items.css';
 
 const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
 
@@ -19,8 +20,7 @@ export default function Items() {
   const [selectItem, setSelectItem] = useState(null)
   const [purchaseItem, setPurchaseItem] = useState(false)
   const [catItems, setCatItems] = useState([])
-  // console.log(selectedCat)
-  // console.log(selectedName)
+ 
   //hydrate = brings in data, makes available to be rendered in browser (like displaying in console)//
   useEffect(() => {
       fetchItems()
@@ -91,14 +91,11 @@ export default function Items() {
 
   return(
     <div style = {{background: "skyblue"}}><br/>
-      <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Bee: {selectedName}</b></span>   
-      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "165px"}}
-        onClick={() => {navigate('/');}}>Back</button> 
-      <ul style={{listStyleType: "none", border: "2px solid maroon",
-        background: "#faca4d", padding: "5px", margin: "10px"}}>
-        
-        {catItems.map(item => (
-          <li><span style={{color: "blue", fontSize: "25px"}}>{item.name}</span><br/><span>{item.description}</span>
+      <span className='itSpan1'><b>Bee: {selectedName}</b></span>   
+      <button className='itButton1' onClick={() => {navigate('/');}}>Back</button> 
+      <ul className='itUl1'>
+         {catItems.map(item => (
+          <li><span className='itSpan2'>{item.name}</span><br/><span>{item.description}</span>
             <p><button style={{margin: "10px"}} onClick = {() => handleSelect(item.id)}>Select</button>
             <button  style={{margin: "10px"}} onClick = {() => handleDelete(item.id)}>Delete</button>
             <button  style={{margin: "10px"}} onClick = {() => {
@@ -115,7 +112,7 @@ export default function Items() {
       </ul>
       <br/>
 
-      <form style={{fontFamily: "helvetica", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px", margin: "10px"}}>
+      <form className='itForm1'>
         
         <label style={{margin: "10px"}} >Enter the name:{"......... "}
           <input style={{width: "300px"}}
@@ -143,11 +140,9 @@ export default function Items() {
 
       </form>
 
-      {editItem? <button onClick={handleUpdate} 
-        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+      {editItem? <button onClick={handleUpdate} className='itButton2'>
         Update the details above then <b>CLICK</b> this button to edit this item:</button> 
-        : <button onClick={handleCreate}
-        style={{fontSize: "16px", margin: "10px", border: "2px solid blue", color: "white", background: "dodgerblue", padding: "5px"}}>
+        : <button onClick={handleCreate} className='itButton2'>
         Complete the details above then <b>CLICK</b> this button to add a new item:</button>}
     </div>
   )

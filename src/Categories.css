@@ -1,0 +1,44 @@
+.catSpan1 {
+   color: blue;
+   padding: 20px;
+   font-size: 35px;
+}
+.catButton1 {
+   font-size: 20px;
+   background: lightgreen;
+   margin-left: 145px;
+}
+.catP1 {
+   color: black; 
+   padding: 10px;
+   background: white;
+   border: 2px solid black;
+   margin: 10px;
+}
+.catUl1 {
+   list-style-type: none;
+   border: 2px solid black; 
+   background: lightgreen;
+   padding: 5px;
+   margin: 10px;
+}
+.catSpan2 {
+   font-size: 16px;
+   font-family: helvetica;
+   margin: 10px;
+   border: 2px solid blue;
+   color: white;
+   background: dodgerblue;
+   padding: 5px;
+}
+.catSpan3 {
+   color: black; 
+   padding: 3px;
+   background: #dddddd;
+   font-size: 15px;
+   margin: 3px;
+}
+.catH1 {
+   color: blue; 
+   padding: 10px;
+}

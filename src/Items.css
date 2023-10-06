@@ -1,0 +1,37 @@
+.itSpan1 {
+    color: blue;
+    padding: 20px;
+    font-size: 35px;
+}
+.itButton1 {
+    font-size: 20px;
+    background: lightGreen;
+    margin-left: 165px;
+}
+.itUl1 {
+    list-style-type: none;
+    border: 2px solid maroon;
+    background: #faca4d;
+    padding: 5px;
+    margin: 10px;
+}
+.itSpan2 {
+    color: blue;
+    font-size: 25px;
+}
+.itForm1 {
+    font-family: helvetica;
+    border: 2px solid blue;
+    color: white;
+    background: dodgerblue;
+    padding: 5px;
+    margin: 10px;
+}
+.itButton2 {
+    font-size: 16px;
+    margin: 10px;
+    border: 2px solid blue;
+    color: white;
+    background: dodgerblue;
+    padding: 5px;
+}

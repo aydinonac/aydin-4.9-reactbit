@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Items from './Items'
 import { useParams, useNavigate } from 'react-router-dom';
+import './Categories.css';
 
 const API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/categories"
 const BASE_API_ENDPOINT = "https://aydin-4-9-deployment.onrender.com/items"
@@ -63,11 +64,10 @@ function Categories() {
       <div>
         {/* Heading */}
         <br/>
-        <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Market-place</b></span>   
-        <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "145px"}}
-        onClick={() => {navigate('/users');}}>Go to Users</button> 
-        <p style={{color: "black", padding: "10px", background: "white",
-        border: "2px solid black", margin: "10px"}}>
+        <span className="catSpan1"><b>Market-place</b></span>   
+        <button className="catButton1"
+          onClick={() => {navigate('/users');}}>Go to Users</button> 
+        <p className='catP1'>
           Welcome to Market-place - the perfect place for all your 'Pet' shopping needs.
           We hope that you will find exactly what you are looking for.
           All of our products are top quality with very competitive prices and discounts.
@@ -77,10 +77,8 @@ function Categories() {
 
       <div>
         {/* Bee section */}
-        <h1 style={{color: "blue", padding: "10px"}}>Bee Categories</h1>
-        <ul style={{listStyleType: "none", border: "2px solid black",  background: "lightgreen",
-            padding: "5px", margin: "10px"}}>
-              
+        <h1 className='catH1'>Bee Categories</h1>
+        <ul className='catUl1'>
           {categories.map(category => (
             <li><span style={{color: "blue", fontSize: "25px"}}>{category.name}</span>
               <button style={{margin: "5px"}} onClick={() => {navigate('/items', {
@@ -98,8 +96,7 @@ function Categories() {
           ))}
         </ul>
         <br/>
-        <span style={{fontSize: "16px", fontFamily: "helvetica", margin: "10px", border: "2px solid blue", color: "white",
-            background: "dodgerblue", padding: '5px'}}>
+        <span className='catSpan2'>
           Add or update a category
           <input
             style={{margin: "10px", fontSize: "15px"}} 
@@ -114,21 +111,17 @@ function Categories() {
 
       <div>
         {/* Dog section */}
-        <h1 style={{color: "blue", padding: "10px"}}>Dog Categories 
-          <span style={{color: "black", padding: "3px", background: "#dddddd",
-          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>
+        <h1 className='catH1'>Dog Categories 
+          <span className='catSpan3'>({"....."} To be done)</span></h1>
        
-        <h1 style={{color: "blue", padding: "10px"}}>Bird Categories
-          <span style={{color: "black", padding: "3px", background: "#dddddd",
-          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>
+        <h1 className='catH1'>Bird Categories
+          <span className='catSpan3'>({"....."} To be done)</span></h1>
         
-        <h1 style={{color: "blue", padding: "10px"}}>Cat Categories
-          <span style={{color: "black", padding: "3px", background: "#dddddd",
-          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>
+        <h1 className='catH1'>Cat Categories
+          <span className='catSpan3'>({"....."} To be done)</span></h1>
        
-        <h1 style={{color: "blue", padding: "10px"}}>Hedge-hog Categories
-         <span style={{color: "black", padding: "3px", background: "#dddddd",
-          fontSize: "15px", margin: "3px"}}>({"....."} To be done)</span></h1>  
+        <h1 className='catH1'>Hedge-hog Categories
+         <span className='catSpan3'>({"....."} To be done)</span></h1>  
       </div>
     </div> 
   )

@@ -1,0 +1,36 @@
+.usSpan1 {
+    color: blue;
+    padding: 20px;
+    font-size: 35px;
+}
+.usButton1 {
+    font-size: 20px;
+    background: lightGreen;
+    margin-left: 305px;
+}
+.usUl1 {
+    list-style-type: none;
+    border: 2px solid maroon;
+    background: #eedddd; 
+    padding: 5px;
+    margin: 10px;
+    font-family: helvetica;
+}
+.usSpan2 {
+    line-height: 0.8;
+    color: darkblue;
+    font-size: 16px;
+}
+.usButton2 {
+    font-size: 16px;
+    margin: 10px;
+    border: 2px solid blue;
+    color: white;
+    background: dodgerblue;
+    padding: 5px;
+    font-family: helvetica;
+}
+.usButton3 {
+    line-height: 0.8;
+    margin: 10px;
+}
