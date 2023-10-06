@@ -88,7 +88,7 @@ export default function Users() {
   return(
     <div style = {{background: "skyblue"}}><br/>
       <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Users: </b></span>   
-      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
+      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "305px"}}
         onClick={() => {navigate('/');}}>Back</button> 
       <ul style={{listStyleType: "none", border: "2px solid maroon",
         background: "#eedddd", padding: "5px", margin: "10px", fontFamily: "helvetica"}}>

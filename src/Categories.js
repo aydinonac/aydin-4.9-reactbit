@@ -64,7 +64,7 @@ function Categories() {
         {/* Heading */}
         <br/>
         <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Market-place</b></span>   
-        <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
+        <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "145px"}}
         onClick={() => {navigate('/users');}}>Go to Users</button> 
         <p style={{color: "black", padding: "10px", background: "white",
         border: "2px solid black", margin: "10px"}}>

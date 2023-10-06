@@ -92,7 +92,7 @@ export default function Items() {
   return(
     <div style = {{background: "skyblue"}}><br/>
       <span style={{color: "blue", padding: "20px", fontSize: "35px"}}><b>Bee: {selectedName}</b></span>   
-      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "115px"}}
+      <button  style={{fontSize: "20px", background: "lightGreen", marginLeft: "165px"}}
         onClick={() => {navigate('/');}}>Back</button> 
       <ul style={{listStyleType: "none", border: "2px solid maroon",
         background: "#faca4d", padding: "5px", margin: "10px"}}>
